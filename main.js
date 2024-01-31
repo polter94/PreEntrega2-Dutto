@@ -19,18 +19,17 @@ if (agregarAlumno.toUpperCase() == "Y") {
     )
 }
 
-const mostrarPromedio = (nombre) => {
-    let indice = alumnos.indexOf(nombre);
+// TODO: hacer listado de nombres en un solo alert para un array de N cantidad de alumnos
+// posible idea, extraer nombres con metodo "map" y arreglarlos en un string usando metodo "join"
+// alert(`Los alumnos son ${alumnos.nombre}`);
 
-    alert(alumnos);
 
-    // if(indice != -1){
-
-    //     alert(`el alumno elegido es ${alumnos[nombre]}`)
-    //     return alumnos[nombre];
-    // }
+const encontrarAlumno = (elegirAlumno) => {
+    for (const alumno of alumnos) {
+        if(alumno.nombre === elegirAlumno) {alert(`el alumno elegido es ${alumno.nombre} y sus notas son: ${alumno.nota1}, ${alumno.nota2}, ${alumno.notaFinal}`)}
+    }
 }
 
 // console.log(alumnos);
 let elegirAlumno = prompt("Elegir el nombre del alumno a mostrar");
-mostrarPromedio(elegirAlumno);
+encontrarAlumno(elegirAlumno);
