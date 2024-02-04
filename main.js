@@ -5,10 +5,11 @@ const alumnos = [
     { nombre: "Celeste", nota1: 6, nota2: 5, notaFinal: 7 },
     { nombre: "Maite", nota1: 10, nota2: 9, notaFinal: 8 }
 ]
+const nombresArray = [];
 
-let agregarAlumno = prompt(`Desea agregar las calificaciones de un alumno mas?`);
-
-if (agregarAlumno.toUpperCase() == "Y") {
+//ofrece la posibilidad de agregar un nuevo alumno a la lista con sus respectivas notas
+let agregarAlumno = prompt(`Desea agregar las calificaciones de un alumno mas? Y/N`);
+if (agregarAlumno.toUpperCase() === "Y") {
     alumnos.push(
         {
             nombre: prompt(`Ingrese el nombre del alumno:`),
@@ -19,17 +20,23 @@ if (agregarAlumno.toUpperCase() == "Y") {
     )
 }
 
-// TODO: hacer listado de nombres en un solo alert para un array de N cantidad de alumnos
-// posible idea, extraer nombres con metodo "map" y arreglarlos en un string usando metodo "join"
-// alert(`Los alumnos son ${alumnos.nombre}`);
+//rellena un array de nombres para mostrar y pedir que el usuario elija de cual alumno quiere ver el promedio
+//concatena los nombres del array y los muestra por pantalla
+const concatNombres = (alumnos) => {
+    let nombresArray = alumnos.map(objeto => objeto.nombre);
+    let nombresConcatenados = nombresArray.join(', ');
 
+    alert(`los alumnos disponibles son: ${nombresConcatenados}`);
+}
+concatNombres(alumnos);
 
+//busca el nombre del alumno elegido de la lista anterior y muestra sus notas
 const encontrarAlumno = (elegirAlumno) => {
     for (const alumno of alumnos) {
         if(alumno.nombre === elegirAlumno) {alert(`el alumno elegido es ${alumno.nombre} y sus notas son: ${alumno.nota1}, ${alumno.nota2}, ${alumno.notaFinal}`)}
     }
 }
-
-// console.log(alumnos);
 let elegirAlumno = prompt("Elegir el nombre del alumno a mostrar");
 encontrarAlumno(elegirAlumno);
+
+//TODO: agregar funcion para calcular y mostrar el promedio del alumno elegido anteriormente
